@@ -1,9 +1,5 @@
 app = "redis-example"
 
-[mounts]
-  destination = "/data"
-  source = "redis_server"
-
 [metrics]
   port = 9091
   path = "/metrics"
@@ -13,15 +9,13 @@ app = "redis-example"
 [build]
   image = "flyio/redis:6.2.6"
 
-# Uncomment these lines for public internet access to Redis on port 10000
-#
-# [[services]]
-# internal_port = 6379
-# protocol      = "tcp"
+[[services]]
+internal_port = 6379
+protocol      = "tcp"
 
-#   [[services.ports]]
-#   port     = "10000"
+  [[services.ports]]
+  port     = "10000"
 
-#   [[services.tcp_checks]]
-#   interval = 10000
-#   timeout  = 2000
+  [[services.tcp_checks]]
+  interval = 10000
+  timeout  = 2000
